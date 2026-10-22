@@ -1,0 +1,1273 @@
+<!DOCTYPE html><html class="dark scroll-smooth" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Outfit:wght@500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#03b5d3","tertiary":"#ffb0cd","secondary-fixed-dim":"#4cd7f6","surface-dim":"#0f131d","on-secondary-fixed":"#001f26","on-surface-variant":"#cbc3d7","error":"#ffb4ab","on-error":"#690005","on-background":"#dfe2f1","surface-container-high":"#262a35","primary-container":"#a078ff","on-secondary-container":"#00424e","tertiary-fixed-dim":"#ffb0cd","surface-variant":"#313540","primary-fixed":"#e9ddff","on-secondary-fixed-variant":"#004e5c","secondary":"#4cd7f6","surface":"#0f131d","outline":"#958ea0","surface-container-highest":"#313540","surface-container-lowest":"#0a0e18","background":"#0f131d","on-primary-fixed":"#23005c","surface-tint":"#d0bcff","on-primary-container":"#340080","secondary-fixed":"#acedff","tertiary-container":"#f751a1","primary":"#d0bcff","inverse-on-surface":"#2c303b","surface-container-low":"#171b26","on-tertiary-fixed":"#3e0022","on-surface":"#dfe2f1","on-tertiary-container":"#570032","on-tertiary-fixed-variant":"#8c0053","outline-variant":"#494454","on-error-container":"#ffdad6","on-primary":"#3c0091","surface-container":"#1c1f2a","on-secondary":"#003640","inverse-primary":"#6d3bd7","error-container":"#93000a","on-primary-fixed-variant":"#5516be","on-tertiary":"#640039","surface-bright":"#353944","tertiary-fixed":"#ffd9e4","primary-fixed-dim":"#d0bcff","inverse-surface":"#dfe2f1"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-3xl":"6rem","space-sm":"0.5rem","space-xs":"0.25rem","margin-mobile":"1.25rem",margin:"4rem",gutter:"1.5rem","margin-tablet":"2rem","space-lg":"1.5rem","space-2xl":"4rem","gutter-mobile":"1rem","space-md":"1rem","space-xl":"2.5rem"},fontFamily:{"headline-sm":["Outfit"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Outfit"],"headline-md":["Outfit"],"label-mono-lg":["JetBrains Mono"],"label-mono-sm":["JetBrains Mono"],"body-sm":["Plus Jakarta Sans"],"display-hero-mobile":["Outfit"],"display-hero":["Outfit"],"headline-lg-mobile":["Outfit"],"body-lg":["Plus Jakarta Sans"]},fontSize:{"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["28px",{lineHeight:"36px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-mono-lg":["14px",{lineHeight:"20px",letterSpacing:"0.02em",fontWeight:"500"}],"label-mono-sm":["11px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"500"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"display-hero-mobile":["38px",{lineHeight:"46px",letterSpacing:"-0.025em",fontWeight:"800"}],"display-hero":["64px",{lineHeight:"72px",letterSpacing:"-0.03em",fontWeight:"800"}],"headline-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.015em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}]}}}}</script>
+<style>
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animations & Keyframes */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.8deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-0.8deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-float-reverse-slow {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 8s ease-in-out infinite;
+}
+
+.hero-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-flow 6s ease infinite;
+}
+
+/* Shimmer overlay for primary CTA */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-shimmer:hover::after {
+  animation: shimmer-sweep 1.2s ease-in-out infinite;
+}
+
+/* Reveal on scroll */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3D tilt styles */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+/* Reduced motion fallbacks */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .tilt-card {
+    transform: none !important;
+  }
+}
+</style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container relative min-h-screen">
+<!-- Ambient Neon Glow Background Layer -->
+<div class="pointer-events-none fixed inset-0 z-0 overflow-hidden"><div class="absolute inset-0 bg-[radial-gradient(#d0bcff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.035]"></div><div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] [background-size:64px_64px] opacity-40"></div><div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-gradient-to-b from-primary/15 via-secondary/5 to-transparent blur-3xl opacity-75 animate-pulse-glow"></div><div class="absolute top-1/3 -left-48 w-[550px] h-[550px] bg-primary-container/15 blur-[140px] rounded-full animate-float-slow"></div><div class="absolute top-2/3 -right-48 w-[550px] h-[550px] bg-secondary-container/15 blur-[140px] rounded-full animate-float-reverse-slow"></div><div class="absolute bottom-10 left-1/3 w-[450px] h-[450px] bg-tertiary-container/10 blur-[130px] rounded-full animate-float-slow"></div></div>
+<!-- Header Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_1px_8px_rgba(0,0,0,0.35)] transition-all duration-300">
+<div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md">
+<a class="flex items-center gap-space-md group" href="#home">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary-container via-primary to-secondary text-surface-container-lowest font-headline-sm text-headline-sm font-bold shadow-[0_0_20px_rgba(160,120,255,0.45)] group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(160,120,255,0.65)] transition-all duration-300">
+<span class="tracking-tighter">SV</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface leading-none tracking-tight group-hover:text-primary transition-colors duration-200">Shree Vindya</span>
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mt-1">Data &amp; Frontend</span>
+</div>
+</a>
+<nav class="hidden xl:flex items-center gap-space-xs p-1 rounded-full bg-surface-container-low/70 backdrop-blur-md border border-white/5" data-active-classes="bg-surface-container-high text-primary">
+<a aria-current="page" class="px-space-md py-space-xs rounded-full font-label-mono-lg transition-all duration-300 bg-surface-container-high text-primary shadow-sm hover:text-primary" data-path="portfolio-overview" href="#home">Home</a>
+<a class="px-space-md py-space-xs rounded-full font-label-mono-lg text-label-mono-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-inner transition-all duration-200" data-path="about-profile" href="#about">About</a>
+<a class="px-space-md py-space-xs rounded-full font-label-mono-lg text-label-mono-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-inner transition-all duration-200" data-path="technical-skills" href="#skills">Skills</a>
+<a class="px-space-md py-space-xs rounded-full font-label-mono-lg text-label-mono-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-inner transition-all duration-200" data-path="analytics-projects" href="#projects">Projects</a>
+<a class="px-space-md py-space-xs rounded-full font-label-mono-lg text-label-mono-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-inner transition-all duration-200" data-path="web-showcase" href="#webdev">Web Showcase</a>
+<a class="px-space-md py-space-xs rounded-full font-label-mono-lg text-label-mono-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-inner transition-all duration-200" data-path="resume-credentials" href="#resume">Resume</a>
+<a class="px-space-md py-space-xs rounded-full font-label-mono-lg text-label-mono-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-inner transition-all duration-200" data-path="contact-inquiry" href="#contact">Contact</a>
+</nav>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<a aria-label="LinkedIn Profile" class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-secondary hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm" href="https://linkedin.com/in/shree-vindya-18372736b" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</a>
+<a aria-label="GitHub Profile" class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-secondary hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">code</span>
+</a>
+</div>
+<div class="p-[1.5px] rounded-full bg-gradient-to-tr from-primary via-secondary to-tertiary shadow-[0_0_12px_rgba(76,215,246,0.35)] hover:scale-105 transition-transform duration-300">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover block" src="https://lh3.googleusercontent.com/aida/AEtjO1UUEET0VXBNQYEAar4RcgbxgxNnG3LR-d7jzbiApSap86HvRhDwYDiM82fGC2YghPh5yRAblfWMDOMKQKIhFazLTSFg-bPRAAN-rZ2d0uzzjXcm5SHXQK4sPf7xQYARsm7lIofiDFPsuVbus2d3b4cHUaCmg2ZAgCK8ki1j3zM5V8CmPnXErnyhCiwTCB3UQeZIBh7okKU_vm7HBECUjFhAGTa5UyRxvNEVDUkoQ2Q0hBZ6aNP6OU07CMjIQDCZaYP4l_TYCsOkng">
+</div>
+<a class="btn-shimmer hidden sm:inline-flex items-center justify-center px-space-md py-space-xs rounded-lg bg-gradient-to-r from-primary-container to-secondary text-on-primary-container font-headline-sm text-[14px] leading-5 font-semibold hover:opacity-95 hover:shadow-[0_0_24px_rgba(160,120,255,0.45)] active:scale-95 transition-all" href="#contact">Hire Me</a>
+</div>
+</div>
+</header>
+<main class="relative z-10 w-full pt-20 bg-background">
+<div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full min-h-[calc(100vh-5rem)] flex items-center overflow-hidden py-space-xl" id="home">
+<!-- 3D Scene Layer (Preserved Exactly) -->
+<div class="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+<!-- Atmospheric Neon Orbs with smooth floating pulse -->
+<div class="absolute top-1/4 left-1/12 w-96 h-96 rounded-full bg-primary-container/20 blur-[130px] pointer-events-none animate-pulse-glow"></div>
+<div class="absolute bottom-10 right-1/12 w-96 h-96 rounded-full bg-secondary-container/20 blur-[140px] pointer-events-none animate-float-reverse-slow"></div>
+<div class="absolute top-1/2 left-1/3 w-80 h-80 rounded-full bg-tertiary-container/15 blur-[120px] pointer-events-none animate-float-slow"></div>
+</div>
+<div class="max-w-7xl mx-auto px-gutter w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Content Column -->
+<div class="lg:col-span-7 flex flex-col gap-space-md reveal-on-scroll revealed">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-low/90 backdrop-blur-md shadow-md border border-white/5 hover:border-secondary/30 transition-all duration-300 w-fit">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary font-semibold tracking-wider">AVAILABLE FOR ENTRY-LEVEL / FRESHER ROLES</span>
+</div>
+<!-- Titles & Identity -->
+<div class="flex flex-col gap-1">
+<p class="font-label-mono-lg text-label-mono-lg text-on-surface-variant uppercase tracking-widest">
+              Hi, I'm <span class="text-on-surface font-extrabold tracking-normal font-headline-sm">SHREE VINDYA</span>
+</p>
+<h1 class="font-display-hero text-display-hero tracking-tight leading-tight text-on-surface">
+<span class="hero-gradient-text bg-gradient-to-r from-primary via-tertiary via-secondary to-primary bg-clip-text text-transparent">Data Analyst</span>
+<br>
+<span class="text-on-surface">&amp; Frontend Dev</span>
+</h1>
+</div>
+<div class="inline-flex items-center gap-2 font-headline-sm text-headline-sm text-secondary font-medium">
+<span class="">MCA Graduate</span>
+<span class="text-outline">•</span>
+<span class="">Data Analytics</span>
+<span class="text-outline">•</span>
+<span class="">Web Systems</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            I turn complex raw datasets into actionable intelligence and engineer engaging, responsive digital interfaces with modern frontend technologies.
+          </p>
+<!-- Call to Actions -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<a class="btn-shimmer inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-gradient-to-r from-primary-container via-primary to-secondary text-on-primary font-headline-sm text-[16px] leading-6 font-bold shadow-xl hover:shadow-[0_10px_35px_rgba(160,120,255,0.4)] active:scale-95 transition-all duration-300 group" href="#projects">
+<span class="">Explore My Projects</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-surface-container-high/70 backdrop-blur-md text-on-surface font-headline-sm text-[16px] leading-6 font-semibold border border-white/5 shadow-md hover:bg-surface-container-highest hover:text-secondary hover:border-secondary/30 active:scale-95 transition-all duration-300 group" href="#resume">
+<span class="material-symbols-outlined text-[20px] group-hover:translate-y-0.5 transition-transform duration-300">download</span>
+<span class="">Download Resume</span>
+</a>
+</div>
+<!-- Social Quick Matrix -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<div class="flex items-center gap-space-xs">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant border border-white/5 hover:text-secondary hover:border-secondary/30 hover:bg-surface-container-high hover:-translate-y-0.5 transition-all duration-200 shadow-sm" href="https://linkedin.com/in/shree-vindya-18372736b" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span class="font-label-mono-sm text-label-mono-sm">LinkedIn</span>
+</a>
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant border border-white/5 hover:text-secondary hover:border-secondary/30 hover:bg-surface-container-high hover:-translate-y-0.5 transition-all duration-200 shadow-sm" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="font-label-mono-sm text-label-mono-sm">GitHub</span>
+</a>
+</div>
+<a class="inline-flex items-center gap-2 font-label-mono-sm text-label-mono-sm text-primary hover:text-secondary hover:underline transition-colors" href="mailto:shreevindyamrai@gmail.com">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="">shreevindyamrai@gmail.com</span>
+</a>
+</div>
+</div>
+<!-- Right Visual Showcase: Portrait & Floating Telemetry -->
+<div class="lg:col-span-5 relative flex justify-center items-center py-space-md reveal-on-scroll revealed">
+<div class="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
+<!-- Glow disc background behind card -->
+<div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-container/30 via-secondary-container/20 to-tertiary-container/30 blur-2xl animate-pulse-glow"></div>
+<!-- Main Photo Shell with gentle 3D tilt -->
+<div class="tilt-card relative z-10 w-[300px] h-[340px] sm:w-[320px] sm:h-[370px] rounded-3xl p-1 bg-gradient-to-b from-primary/40 via-surface-container-highest/60 to-secondary/40 shadow-2xl backdrop-blur-xl border border-white/10 hover:shadow-[0_15px_45px_rgba(208,188,255,0.25)]">
+<div class="w-full h-full rounded-[22px] overflow-hidden bg-surface-container-lowest relative group">
+<img alt="Shree Vindya Professional Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGzPktgmfHYYpEwo4MnCqeegIe96L5IllyiuR4D2VQZ7pd8Wev5sUJphx6TgAhaf86hvyoG9H21GyO11D5WbL_HzByw8AzbAZNQje5Ci8lHa8offDQuAi3t53QCyLWgGtjs-Om2lsLj_ALif-CwshfL0pHYfSpifHOi0IO7jiWjNYuOMtt8uz2nzPqSz1Tz2yu-KcGmMc6DW3JyWysPw_zHOhIVPa_xo7jhU9vslNdJY_lM0pCv3WEeGv6eYFLAQAbNQ">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold tracking-wider uppercase">Shree Vindya</span>
+<span class="inline-block px-2 py-0.5 rounded-full bg-primary/20 text-primary font-label-mono-sm text-[10px] border border-primary/30">MCA • Canara College, Mangaluru</span>
+</div>
+</div>
+</div>
+<!-- Floating Stat Widget 1 (Top-Right) -->
+<div class="animate-float-slow absolute -top-4 -right-2 sm:-right-6 z-20 px-space-md py-space-xs rounded-2xl bg-surface-container-high/90 backdrop-blur-xl shadow-xl border border-white/10 hover:border-secondary/50 hover:shadow-[0_10px_30px_rgba(76,215,246,0.25)] flex items-center gap-space-xs transition-all duration-300 cursor-default">
+<div class="w-8 h-8 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] leading-5 text-on-surface font-bold">240k+ Rows</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant">Cleaned &amp; Modeled</span>
+</div>
+</div>
+<!-- Floating Stat Widget 2 (Bottom-Left) -->
+<div class="animate-float-reverse-slow absolute -bottom-4 -left-2 sm:-left-6 z-20 px-space-md py-space-xs rounded-2xl bg-surface-container-high/90 backdrop-blur-xl shadow-xl border border-white/10 hover:border-primary/50 hover:shadow-[0_10px_30px_rgba(208,188,255,0.25)] flex items-center gap-space-xs transition-all duration-300 cursor-default" style="animation-delay: -3s;">
+<div class="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">code_blocks</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] leading-5 text-on-surface font-bold">React &amp; Modern JS</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant">Active Frontend Learner</span>
+</div>
+</div>
+<!-- Floating Stat Widget 3 (Bottom-Right) -->
+<div class="animate-float-slow hidden sm:flex absolute bottom-12 -right-8 z-20 px-space-sm py-1.5 rounded-xl bg-surface-container-low/95 backdrop-blur-md shadow-lg border border-white/5 hover:border-tertiary/40 items-center gap-2 transition-all duration-300" style="animation-delay: -1.5s;">
+<span class="material-symbols-outlined text-tertiary text-[18px]">school</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface">Canara College • Mangaluru</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ABOUT ME SECTION -->
+<section class="relative w-full py-space-3xl bg-surface-container-lowest/50" id="about">
+<div class="max-w-7xl mx-auto px-gutter reveal-on-scroll revealed">
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center mb-space-2xl">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mb-1">GET TO KNOW ME</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Passionate About Data &amp; Interface Craft</h2>
+<div class="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-secondary mt-space-sm"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left: Image & Quick Specs -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="tilt-card relative rounded-3xl overflow-hidden bg-surface-container-high shadow-xl p-2 border border-white/5 hover:border-primary/40 hover:shadow-[0_10px_35px_rgba(139,92,246,0.22)] transition-all">
+<div class="w-full h-80 rounded-2xl overflow-hidden relative group">
+<img alt="Shree Vindya Working Context" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGzPktgmfHYYpEwo4MnCqeegIe96L5IllyiuR4D2VQZ7pd8Wev5sUJphx6TgAhaf86hvyoG9H21GyO11D5WbL_HzByw8AzbAZNQje5Ci8lHa8offDQuAi3t53QCyLWgGtjs-Om2lsLj_ALif-CwshfL0pHYfSpifHOi0IO7jiWjNYuOMtt8uz2nzPqSz1Tz2yu-KcGmMc6DW3JyWysPw_zHOhIVPa_xo7jhU9vslNdJY_lM0pCv3WEeGv6eYFLAQAbNQ">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent opacity-60"></div>
+</div>
+</div>
+<!-- Glass Quick Info Card -->
+<div class="p-space-lg rounded-2xl bg-surface-container/80 backdrop-blur-xl shadow-lg border border-white/5 flex flex-col gap-space-sm hover:border-secondary/30 transition-all duration-300">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">school</span>
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-outline">Postgraduate</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Master of Computer Applications (MCA)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Canara College, Mangaluru University</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">functions</span>
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-outline">Undergraduate</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">B.Sc. in Mathematics &amp; Chemistry</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vivekananda College, Puttur</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-tertiary text-[22px] mt-0.5">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-outline">Location</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Mangaluru, Karnataka, India</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Available for remote &amp; on-site roles</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">work</span>
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-outline">Target Roles</span>
+<span class="font-body-md text-body-md text-secondary font-semibold">Data Analyst • Frontend Developer</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Narrative & Highlights -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+              I'm an MCA graduate with a foundational background in Mathematics and Chemistry, uniquely bridging rigorous analytical reasoning with intuitive visual frontend development. I thrive on diving deep into messy datasets to discover patterns, crafting impactful visualizations, and translating business requirements into polished, responsive web experiences.
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Whether writing complex SQL queries to clean over 240,000 crop records, training neural networks for optical character recognition, or composing responsive components in modern web frameworks, I focus on clean architecture, precision telemetry, and user satisfaction.
+            </p>
+</div>
+<!-- Highlight Badges Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<div class="p-space-md rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-white/5 flex flex-col items-center text-center gap-2 shadow-sm hover:bg-surface-container-highest hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+<span class="text-2xl transform hover:scale-110 transition-transform">🧠</span>
+<span class="font-headline-sm text-[14px] leading-5 text-on-surface">Analytical Thinker</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-white/5 flex flex-col items-center text-center gap-2 shadow-sm hover:bg-surface-container-highest hover:border-secondary/40 hover:-translate-y-1 transition-all duration-300">
+<span class="text-2xl transform hover:scale-110 transition-transform">⚡</span>
+<span class="font-headline-sm text-[14px] leading-5 text-on-surface">Problem Solver</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-white/5 flex flex-col items-center text-center gap-2 shadow-sm hover:bg-surface-container-highest hover:border-tertiary/40 hover:-translate-y-1 transition-all duration-300">
+<span class="text-2xl transform hover:scale-110 transition-transform">🚀</span>
+<span class="font-headline-sm text-[14px] leading-5 text-on-surface">Quick Learner</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-high/60 backdrop-blur-md border border-white/5 flex flex-col items-center text-center gap-2 shadow-sm hover:bg-surface-container-highest hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+<span class="text-2xl transform hover:scale-110 transition-transform">🌱</span>
+<span class="font-headline-sm text-[14px] leading-5 text-on-surface">Continuous Growth</span>
+</div>
+</div>
+<!-- Quantitative Metrics Bento Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-secondary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-1">
+<span class="font-display-hero text-headline-lg font-bold text-secondary">241K+</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">Data Records Cleaned</span>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-1">
+<span class="font-display-hero text-headline-lg font-bold text-primary">98%</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">CNN Test Accuracy</span>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-tertiary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-1">
+<span class="font-display-hero text-headline-lg font-bold text-tertiary">6+</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">Full Projects Delivered</span>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-1">
+<span class="font-display-hero text-headline-lg font-bold text-on-surface">100%</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">Passion for Code</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SKILLS SECTION -->
+<section class="relative w-full py-space-3xl" id="skills">
+<div class="max-w-7xl mx-auto px-gutter reveal-on-scroll revealed">
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center mb-space-2xl">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mb-1">TECHNICAL ARSENAL</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Skills &amp; Technologies</h2>
+<div class="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-secondary mt-space-sm"></div>
+</div>
+<!-- Skill Categories Stack -->
+<div class="flex flex-col gap-space-2xl">
+<!-- Category A: Data Analytics -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm pb-space-xs border-b border-surface-container-high/40">
+<span class="material-symbols-outlined text-secondary text-[24px]">database</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Data Analytics &amp; Intelligence</h3>
+<span class="ml-auto font-label-mono-sm text-label-mono-sm px-space-sm py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20">8 Core Proficiencies</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Python -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-secondary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(76,215,246,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Python</span>
+<span class="material-symbols-outlined text-secondary text-[20px] group-hover:scale-125 transition-transform duration-300">code</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Transforming, wrangling, &amp; manipulating complex DataFrames with clean script logic.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">NumPy</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Pandas</span>
+</div>
+</div>
+<!-- SQL -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(208,188,255,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">SQL / SQLite</span>
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-125 transition-transform duration-300">table_rows</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Complex relational queries, multi-table joins, subqueries, and grouping aggregations.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Relational DB</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">ETL</span>
+</div>
+</div>
+<!-- Power BI -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-tertiary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,176,205,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-tertiary transition-colors">Power BI</span>
+<span class="material-symbols-outlined text-tertiary text-[20px] group-hover:scale-125 transition-transform duration-300">bar_chart</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Interactive enterprise dashboards, DAX metrics, data modeling, and business reports.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Dashboards</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">DAX</span>
+</div>
+</div>
+<!-- Excel -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-secondary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(76,215,246,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Advanced Excel</span>
+<span class="material-symbols-outlined text-secondary text-[20px] group-hover:scale-125 transition-transform duration-300">grid_on</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pivot tables, VLOOKUP/XLOOKUP, nested conditions, and statistical summaries.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Pivot Charts</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Formulas</span>
+</div>
+</div>
+<!-- Pandas -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(208,188,255,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Pandas Library</span>
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-125 transition-transform duration-300">data_table</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Missing value imputation, datetime feature extraction, and high-volume reshaping.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Wrangling</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Imputation</span>
+</div>
+</div>
+<!-- Matplotlib & Seaborn -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-secondary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(76,215,246,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Data Visualization</span>
+<span class="material-symbols-outlined text-secondary text-[20px] group-hover:scale-125 transition-transform duration-300">query_stats</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Distribution plots, correlation heatmaps, trend regressions via Matplotlib &amp; Seaborn.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Matplotlib</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Seaborn</span>
+</div>
+</div>
+<!-- Data Cleaning -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-tertiary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,176,205,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-tertiary transition-colors">Data Cleaning (ETL)</span>
+<span class="material-symbols-outlined text-tertiary text-[20px] group-hover:scale-125 transition-transform duration-300">cleaning_services</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Detecting anomalies, duplicate removal, outlier handling, and structural normalization.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Validation</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">Integrity</span>
+</div>
+</div>
+<!-- Machine Learning Concepts -->
+<div class="p-space-md rounded-2xl bg-surface-container/70 backdrop-blur-md shadow-md border border-white/5 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(208,188,255,0.18)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">ML Foundations</span>
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-125 transition-transform duration-300">model_training</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Supervised learning fundamentals, CNN architectures, evaluation metrics &amp; OpenCV.</p>
+<div class="mt-auto pt-space-xs flex gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">TensorFlow</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-label-mono-sm text-[10px] text-outline">CNN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category B & C: Frontend Dev & Currently Learning Side-by-Side -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Category B: Frontend Development -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm pb-space-xs border-b border-surface-container-high/40">
+<span class="material-symbols-outlined text-primary text-[24px]">terminal</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Frontend Development</h3>
+<span class="ml-auto font-label-mono-sm text-label-mono-sm px-space-sm py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">Web Standards</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(208,188,255,0.15)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">HTML5 Semantic Core</span>
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-125 transition-transform duration-300">html</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Accessible structure, semantic landmarks, microdata tokens, and WCAG standards.</p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-secondary/40 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(76,215,246,0.15)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">CSS3 &amp; TailwindCSS</span>
+<span class="material-symbols-outlined text-secondary text-[20px] group-hover:scale-125 transition-transform duration-300">css</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Utility-first typography, fluid CSS grid, flexbox alignments, and dark mode systems.</p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-tertiary/40 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(255,176,205,0.15)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-tertiary transition-colors">Material UI &amp; Design 3</span>
+<span class="material-symbols-outlined text-tertiary text-[20px] group-hover:scale-125 transition-transform duration-300">palette</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Component customization, token systems, Material Design 3 guidelines from Coursera certification.</p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-md border border-white/5 hover:border-secondary/40 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(76,215,246,0.15)] transition-all duration-300 flex flex-col gap-space-xs group">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Responsive UI Engineering</span>
+<span class="material-symbols-outlined text-secondary text-[20px] group-hover:scale-125 transition-transform duration-300">devices</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mobile-first fluid layouts, cross-browser compatibility, and touch interaction polish.</p>
+</div>
+</div>
+</div>
+<!-- Category C: Currently Learning / Active Strengthening -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm pb-space-xs border-b border-surface-container-high/40">
+<span class="material-symbols-outlined text-tertiary text-[24px]">trending_up</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Currently Strengthening</h3>
+<span class="ml-auto font-label-mono-sm text-label-mono-sm px-space-sm py-0.5 rounded-full bg-tertiary/15 text-tertiary font-semibold border border-tertiary/20">Active Growth</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-md rounded-2xl bg-surface-container/60 shadow-md flex flex-col gap-1 border-l-4 border-l-primary border border-white/5 hover:border-white/20 hover:translate-x-1.5 transition-all duration-300">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-[16px] leading-6 text-on-surface font-semibold">JavaScript (ES6+)</span>
+<span class="font-label-mono-sm text-[11px] text-primary">In Progress</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Deepening DOM manipulation, asynchronous promises, fetch API, and closures.</p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container/60 shadow-md flex flex-col gap-1 border-l-4 border-l-secondary border border-white/5 hover:border-white/20 hover:translate-x-1.5 transition-all duration-300">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-[16px] leading-6 text-on-surface font-semibold">React.js Ecosystem</span>
+<span class="font-label-mono-sm text-[11px] text-secondary">Active Development</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Component lifecycles, hooks (useState, useEffect), and reactive state handling.</p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container/60 shadow-md flex flex-col gap-1 border-l-4 border-l-tertiary border border-white/5 hover:border-white/20 hover:translate-x-1.5 transition-all duration-300">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-[16px] leading-6 text-on-surface font-semibold">FastAPI &amp; Backend Integration</span>
+<span class="font-label-mono-sm text-[11px] text-tertiary">Applied in KrishiSahay</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">REST endpoint routing, Pydantic schemas, and SQLAlchemy data layer integrations.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURED PROJECTS SECTION -->
+<section class="relative w-full py-space-3xl bg-surface-container-lowest/70" id="projects">
+<div class="max-w-7xl mx-auto px-gutter reveal-on-scroll revealed">
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center mb-space-2xl">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mb-1">PORTFOLIO HIGHLIGHTS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Featured Analytics &amp; Machine Learning Projects</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+          Real datasets, tangible discoveries, and end-to-end analytical pipelines built with Python, SQL, and interactive web tools.
+        </p>
+<div class="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-secondary mt-space-sm"></div>
+</div>
+<!-- 4 Rich Project Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Project 1: Crop Production Analysis -->
+<div class="tilt-card rounded-3xl bg-surface-container/80 backdrop-blur-xl p-space-xl shadow-xl flex flex-col justify-between group border border-white/5 hover:border-secondary/50 hover:shadow-[0_15px_40px_rgba(76,215,246,0.22)] transition-all duration-300">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded-full bg-secondary/10 text-secondary font-label-mono-sm text-label-mono-sm uppercase tracking-wider font-semibold border border-secondary/20">Data Analysis &amp; Visualization</span>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">1997 – 2015 Dataset</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors">Crop Production Analysis — India</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Analyzed extensive Indian agricultural production data from 1997 to 2015 (<strong class="text-on-surface font-semibold">246,091 raw records cleaned down to 241,149</strong>) using Python, Pandas, and SQLite. Discovered top crop yields (Sugarcane highest production, Goa highest yield 7.88).
+              </p>
+</div>
+<!-- Mini Inline SVG Chart Preview -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest/80 shadow-inner flex flex-col gap-2 group-hover:border-secondary/20 border border-transparent transition-colors">
+<div class="flex justify-between items-center font-label-mono-sm text-[11px] text-outline">
+<span class="">Top Yield Metrics (Cleaned Samples)</span>
+<span class="text-secondary font-semibold">241k rows</span>
+</div>
+<svg class="w-full h-12 text-secondary group-hover:brightness-125 transition-all" fill="none" preserveAspectRatio="none" viewBox="0 0 300 40">
+<path d="M 0 35 Q 40 10, 80 25 T 160 8 T 240 18 T 300 5" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M 0 35 Q 40 10, 80 25 T 160 8 T 240 18 T 300 5 L 300 40 L 0 40 Z" fill="currentColor" fill-opacity="0.12"></path>
+</svg>
+</div>
+<!-- Tech Badges -->
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Python</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Pandas</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">SQLite</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Matplotlib</span>
+</div>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-space-sm pt-space-lg border-t border-surface-container-high/40 mt-space-md">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-xl bg-surface-container-highest text-on-surface hover:text-secondary hover:bg-surface-container-high active:scale-95 font-label-mono-sm text-label-mono-sm transition-all" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">GitHub Repo</span>
+</a>
+<a class="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm text-secondary hover:underline group/link ml-auto" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="">View Case Study</span>
+<span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Project 2: Superstore Sales Analysis -->
+<div class="tilt-card rounded-3xl bg-surface-container/80 backdrop-blur-xl p-space-xl shadow-xl flex flex-col justify-between group border border-white/5 hover:border-primary/50 hover:shadow-[0_15px_40px_rgba(208,188,255,0.22)] transition-all duration-300">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded-full bg-primary/10 text-primary font-label-mono-sm text-label-mono-sm uppercase tracking-wider font-semibold border border-primary/20">Business Intelligence</span>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">Executive Dashboard</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Superstore Sales Analysis Dashboard</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Explored multi-region retail transaction data to uncover customer retention rates, profit margins, and seasonal velocity. Created executive Power BI dashboard with interactive slicers and DAX calculation metrics.
+              </p>
+</div>
+<!-- Mini Inline SVG Chart Preview (Bars) -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest/80 shadow-inner flex flex-col gap-2 group-hover:border-primary/20 border border-transparent transition-colors">
+<div class="flex justify-between items-center font-label-mono-sm text-[11px] text-outline">
+<span class="">Regional Margin Distribution</span>
+<span class="text-primary font-semibold">Q1-Q4 Velocity</span>
+</div>
+<div class="flex items-end gap-2 h-10 w-full pt-1">
+<div class="flex-1 bg-primary/30 h-[40%] rounded-t group-hover:h-[45%] transition-all"></div>
+<div class="flex-1 bg-primary/50 h-[65%] rounded-t group-hover:h-[70%] transition-all"></div>
+<div class="flex-1 bg-primary/80 h-[90%] rounded-t group-hover:h-[95%] transition-all"></div>
+<div class="flex-1 bg-secondary/80 h-[75%] rounded-t group-hover:h-[80%] transition-all"></div>
+<div class="flex-1 bg-primary/60 h-[50%] rounded-t group-hover:h-[55%] transition-all"></div>
+<div class="flex-1 bg-primary-container h-[100%] rounded-t"></div>
+</div>
+</div>
+<!-- Tech Badges -->
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Power BI</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Advanced Excel</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Data Modeling</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Visual Analytics</span>
+</div>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-space-sm pt-space-lg border-t border-surface-container-high/40 mt-space-md">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-xl bg-surface-container-highest text-on-surface hover:text-primary hover:bg-surface-container-high active:scale-95 font-label-mono-sm text-label-mono-sm transition-all" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">GitHub Repo</span>
+</a>
+<a class="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm text-primary hover:underline group/link ml-auto" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="">View Dashboard Insights</span>
+<span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Project 3: KrishiSahay -->
+<div class="tilt-card rounded-3xl bg-surface-container/80 backdrop-blur-xl p-space-xl shadow-xl flex flex-col justify-between group border border-white/5 hover:border-tertiary/50 hover:shadow-[0_15px_40px_rgba(255,176,205,0.22)] transition-all duration-300">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded-full bg-tertiary/15 text-tertiary font-label-mono-sm text-label-mono-sm uppercase tracking-wider font-semibold border border-tertiary/20">MCA Final-Year Capstone</span>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">8 Indian Languages</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-tertiary transition-colors">KrishiSahay — AI-Powered Farming Assistant</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Multilingual agricultural assistant supporting 8 Indian languages using Google Gemini 2.5 Flash, FastAPI backend, SQLite/SQLAlchemy ORM, and responsive React/Material UI interface with AGMARKNET live market price links.
+              </p>
+</div>
+<!-- Architecture Diagram Micro Wire -->
+<div class="p-space-sm rounded-2xl bg-surface-container-lowest/80 shadow-inner flex items-center justify-between text-center font-label-mono-sm text-[11px] text-outline group-hover:border-tertiary/20 border border-transparent transition-colors">
+<div class="flex flex-col items-center p-2 rounded bg-surface-container-low text-on-surface hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[16px]">devices</span>
+<span class="">React UI</span>
+</div>
+<span class="text-outline">→</span>
+<div class="flex flex-col items-center p-2 rounded bg-surface-container-low text-on-surface hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[16px]">bolt</span>
+<span class="">FastAPI</span>
+</div>
+<span class="text-outline">→</span>
+<div class="flex flex-col items-center p-2 rounded bg-surface-container-low text-on-surface hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-[16px]">smart_toy</span>
+<span class="">Gemini 2.5</span>
+</div>
+<span class="text-outline">→</span>
+<div class="flex flex-col items-center p-2 rounded bg-surface-container-low text-on-surface hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[16px]">data_object</span>
+<span class="">AGMARKNET</span>
+</div>
+</div>
+<!-- Tech Badges -->
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">React</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Material UI</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">FastAPI</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Gemini AI</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">JWT Auth</span>
+</div>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-space-sm pt-space-lg border-t border-surface-container-high/40 mt-space-md">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-xl bg-surface-container-highest text-on-surface hover:text-tertiary hover:bg-surface-container-high active:scale-95 font-label-mono-sm text-label-mono-sm transition-all" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">GitHub Repo</span>
+</a>
+<a class="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm text-tertiary hover:underline group/link ml-auto" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="">System Architecture</span>
+<span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Project 4: Multi-Digit Handwritten Recognition -->
+<div class="tilt-card rounded-3xl bg-surface-container/80 backdrop-blur-xl p-space-xl shadow-xl flex flex-col justify-between group border border-white/5 hover:border-secondary/50 hover:shadow-[0_15px_40px_rgba(76,215,246,0.22)] transition-all duration-300">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded-full bg-secondary/10 text-secondary font-label-mono-sm text-label-mono-sm uppercase tracking-wider font-semibold border border-secondary/20">Deep Learning / Computer Vision</span>
+<span class="font-label-mono-sm text-label-mono-sm text-outline">98% Accuracy</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors">Multi-Digit Handwritten Recognition</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Convolutional Neural Network (CNN) trained on MNIST and custom handwritten datasets achieving 98% test accuracy, paired with OpenCV segmentation pipeline and Flask API interface.
+              </p>
+</div>
+<!-- Accuracy Gauge Inline Block -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest/80 shadow-inner flex items-center justify-between group-hover:border-secondary/20 border border-transparent transition-colors">
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-[11px] text-outline">Validation Performance</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold">98.2% Accuracy</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="px-2 py-1 rounded bg-secondary/15 text-secondary font-label-mono-sm text-[11px]">Loss: 0.048</span>
+<span class="px-2 py-1 rounded bg-primary/15 text-primary font-label-mono-sm text-[11px]">Epochs: 25</span>
+</div>
+</div>
+<!-- Tech Badges -->
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Python</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">TensorFlow</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">OpenCV</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Flask</span>
+</div>
+</div>
+<!-- Card Actions -->
+<div class="flex items-center gap-space-sm pt-space-lg border-t border-surface-container-high/40 mt-space-md">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-xl bg-surface-container-highest text-on-surface hover:text-secondary hover:bg-surface-container-high active:scale-95 font-label-mono-sm text-label-mono-sm transition-all" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">GitHub Repo</span>
+</a>
+<a class="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm text-secondary hover:underline group/link ml-auto" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="">Model Details</span>
+<span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- View All Repositories Callout -->
+<div class="flex justify-center mt-space-2xl">
+<a class="btn-shimmer inline-flex items-center gap-space-xs px-space-xl py-space-md rounded-2xl bg-surface-container-high/80 text-on-surface hover:bg-surface-container-highest hover:text-secondary border border-white/5 hover:border-secondary/30 font-headline-sm text-headline-sm font-semibold shadow-lg hover:shadow-[0_10px_35px_rgba(76,215,246,0.2)] active:scale-95 transition-all duration-300 group" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">code</span>
+<span class="">View All Repositories on GitHub</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- WEB DEVELOPMENT SHOWCASE SECTION -->
+<section class="relative w-full py-space-3xl" id="webdev">
+<div class="max-w-7xl mx-auto px-gutter reveal-on-scroll revealed">
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center mb-space-2xl">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mb-1">FRONTEND CRAFT</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Interactive Web Development</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mt-1">
+          Browser-window experiences engineered with modern design tokens, responsive dynamics, and clean code hygiene.
+        </p>
+<div class="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-secondary mt-space-sm"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Showcase Card 1: 3D Portfolio Experience -->
+<div class="tilt-card rounded-3xl bg-surface-container/90 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col border border-white/5 hover:border-primary/40 hover:shadow-[0_15px_40px_rgba(208,188,255,0.22)] transition-all duration-300">
+<!-- macOS Browser Header Bar -->
+<div class="h-10 bg-surface-container-highest px-space-md flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error/90 hover:opacity-100 transition-opacity"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container/90 hover:opacity-100 transition-opacity"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container/90 hover:opacity-100 transition-opacity"></span>
+</div>
+<div class="px-space-md py-0.5 rounded-md bg-surface-container-lowest/80 text-on-surface-variant font-label-mono-sm text-[11px] truncate max-w-xs border border-white/5">
+              https://shreevindya.portfolio/3d-experience
+            </div>
+<div class="w-12"></div>
+</div>
+<div class="p-space-xl flex flex-col gap-space-md flex-1 justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">view_in_ar</span>
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-primary font-semibold tracking-wider">Live System Core</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Shree Vindya 3D Portfolio (This Web Experience)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Modern dark theme, glassmorphic UI, Three.js 3D data-core constellation, responsive mobile drawer, smooth anchor navigation, and strict design token adherence.
+              </p>
+<div class="flex flex-wrap gap-space-xs pt-space-xs">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">HTML5</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">TailwindCSS</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Three.js</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Vanilla JS</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pt-space-md border-t border-surface-container-high/40">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-xl bg-surface-container-high text-on-surface hover:text-primary active:scale-95 font-label-mono-sm text-label-mono-sm transition-all" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">View Repository</span>
+</a>
+<span class="inline-flex items-center gap-1.5 ml-auto font-label-mono-sm text-label-mono-sm text-secondary">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                Active Live Demo
+              </span>
+</div>
+</div>
+</div>
+<!-- Showcase Card 2: Internship Experience -->
+<div class="tilt-card rounded-3xl bg-surface-container/90 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col border border-white/5 hover:border-secondary/40 hover:shadow-[0_15px_40px_rgba(76,215,246,0.22)] transition-all duration-300">
+<!-- macOS Browser Header Bar -->
+<div class="h-10 bg-surface-container-highest px-space-md flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error/90 hover:opacity-100 transition-opacity"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container/90 hover:opacity-100 transition-opacity"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container/90 hover:opacity-100 transition-opacity"></span>
+</div>
+<div class="px-space-md py-0.5 rounded-md bg-surface-container-lowest/80 text-on-surface-variant font-label-mono-sm text-[11px] truncate max-w-xs border border-white/5">
+              https://zephyrtechnologies.internal/portal-preview
+            </div>
+<div class="w-12"></div>
+</div>
+<div class="p-space-xl flex flex-col gap-space-md flex-1 justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">corporate_fare</span>
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary font-semibold tracking-wider">Industrial Experience</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Full Stack Development Internship — Zephyr Technologies</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Contributed to AI portal integrating multi-AI APIs with React.js components, reusable stateful UI, and responsive REST endpoints. Worked in agile sprints with Git version control.
+              </p>
+<div class="flex flex-wrap gap-space-xs pt-space-xs">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">React.js</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">JavaScript</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">REST APIs</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-high font-label-mono-sm text-label-mono-sm text-on-surface">Git / GitHub</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pt-space-md border-t border-surface-container-high/40">
+<a class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-xl bg-surface-container-high text-on-surface hover:text-secondary active:scale-95 font-label-mono-sm text-label-mono-sm transition-all" href="#about">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">Experience Summary</span>
+</a>
+<a class="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm text-secondary hover:underline group/link ml-auto" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<span class="">GitHub Profile</span>
+<span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- RESUME & CREDENTIALS SECTION -->
+<section class="relative w-full py-space-3xl bg-surface-container-lowest/60" id="resume">
+<div class="max-w-7xl mx-auto px-gutter reveal-on-scroll revealed">
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center mb-space-2xl">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mb-1">VERIFIED CREDENTIALS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Curriculum Vitae</h2>
+<div class="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-secondary mt-space-sm"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Interactive Document Preview (Styled Resume Image) -->
+<div class="lg:col-span-5 flex justify-center">
+<div class="tilt-card relative group max-w-sm w-full rounded-2xl p-2 bg-surface-container-high shadow-2xl backdrop-blur-xl border border-white/5 hover:border-primary/50 hover:shadow-[0_15px_45px_rgba(208,188,255,0.25)] transition-all duration-300">
+<div class="relative rounded-xl overflow-hidden aspect-[0.71] bg-surface-container-lowest">
+<img alt="Official Resume Document of Shree Vindya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmSymuWcTmxbbkPUl0HE5OpK_0BvrhT1tcL0d_HZahiDDm3LGRRpv63KS4bjgeM8CRLLlQmPyknOJzLC10e-IjYDIXetrfEITXnmijRaWevKtPCe4LpsJalmNcPcHh2MkRwnfvWSUZSxNyEAavAOcTKL05BHkQ7sixT7D-4a1pKYZbMajztuZaiEDJtWIhygMvE0odmdW5JCTTgnLPe8hEEws_tjZOtRwOW4E8pMs9m-LrZOjZnHErdu68INxkH4G3_A">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity"></div>
+</div>
+<!-- Document Floating Tag with bobbing micro-interaction -->
+<div class="animate-float-slow absolute bottom-4 left-4 right-4 p-space-sm rounded-xl bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-between shadow-lg border border-white/10 group-hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">picture_as_pdf</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface">Shree_Vindya_CV.pdf</span>
+</div>
+<span class="font-label-mono-sm text-[11px] text-outline">Verified</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Highlights & Download Actions -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Academic Qualifications &amp; Accreditations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Comprehensive profile outlining coursework in advanced database architecture, machine learning algorithms, and modern frontend frameworks.
+            </p>
+</div>
+<!-- Highlight Lists -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-2xl bg-surface-container shadow-sm border border-white/5 hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-1">
+<span class="font-label-mono-sm text-label-mono-sm text-primary uppercase">Education Milestone</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">MCA (Final Semester)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Canara College • Mangaluru</span>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-container shadow-sm border border-white/5 hover:border-secondary/30 hover:-translate-y-1 transition-all duration-300 flex flex-col gap-1">
+<span class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">Undergraduate Foundation</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">B.Sc. Mathematics &amp; Chem</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vivekananda College • Puttur</span>
+</div>
+</div>
+<!-- Certifications Pill Row -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm text-outline uppercase tracking-wider">Industry Certifications</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-space-sm py-1.5 rounded-xl bg-surface-container-high border border-white/5 hover:border-tertiary/40 hover:-translate-y-0.5 text-on-surface font-label-mono-sm text-label-mono-sm flex items-center gap-1.5 shadow-sm transition-all duration-200">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified</span>
+                Coursera: UI Design with Material Design 3
+              </span>
+<span class="px-space-sm py-1.5 rounded-xl bg-surface-container-high border border-white/5 hover:border-primary/40 hover:-translate-y-0.5 text-on-surface font-label-mono-sm text-label-mono-sm flex items-center gap-1.5 shadow-sm transition-all duration-200">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+                IBM SkillBuild: AI Fundamentals
+              </span>
+<span class="px-space-sm py-1.5 rounded-xl bg-surface-container-high border border-white/5 hover:border-secondary/40 hover:-translate-y-0.5 text-on-surface font-label-mono-sm text-label-mono-sm flex items-center gap-1.5 shadow-sm transition-all duration-200">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+                NPTEL: Python for Data Science
+              </span>
+<span class="px-space-sm py-1.5 rounded-xl bg-surface-container-high border border-white/5 hover:border-white/20 hover:-translate-y-0.5 text-on-surface font-label-mono-sm text-label-mono-sm flex items-center gap-1.5 shadow-sm transition-all duration-200">
+<span class="material-symbols-outlined text-[16px] text-outline">verified</span>
+                Cisco: Cybersecurity Essentials
+              </span>
+</div>
+</div>
+<!-- Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<a class="btn-shimmer inline-flex items-center gap-2 px-space-lg py-space-sm rounded-xl bg-gradient-to-r from-primary-container via-primary to-secondary text-on-primary font-headline-sm text-[16px] leading-6 font-bold shadow-lg hover:shadow-[0_10px_35px_rgba(160,120,255,0.4)] active:scale-95 transition-all duration-300 group" href="mailto:shreevindyamrai@gmail.com?subject=Resume%20Request%20-%20Shree%20Vindya">
+<span class="material-symbols-outlined text-[20px] group-hover:translate-y-0.5 transition-transform">download</span>
+<span class="">Download Full Resume (PDF)</span>
+</a>
+<a class="inline-flex items-center gap-2 px-space-lg py-space-sm rounded-xl bg-surface-container-high text-on-surface border border-white/5 hover:border-secondary/30 hover:bg-surface-container-highest hover:text-secondary active:scale-95 font-headline-sm text-[16px] leading-6 font-semibold transition-all duration-300" href="#contact">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="">View Resume Document</span>
+</a>
+</div>
+<!-- Contact Mini Callout -->
+<div class="p-space-md rounded-2xl bg-surface-container-low border border-white/5 shadow-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2 font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary text-[18px]">call</span>
+<span class="">+91 6238100146</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-[18px]">mail</span>
+<span class="">shreevindyamrai@gmail.com</span>
+</div>
+<div class="flex items-center gap-2 font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-tertiary text-[18px]">pin_drop</span>
+<span class="">Mangaluru, Karnataka</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT SECTION -->
+<section class="relative w-full py-space-3xl" id="contact">
+<div class="max-w-7xl mx-auto px-gutter reveal-on-scroll revealed">
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center mb-space-2xl">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-widest mb-1">LET'S BUILD SOMETHING TOGETHER</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Get In Touch</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mt-1">
+          Open for full-time entry-level opportunities, fresher roles in Data Analytics and Frontend Development, and collaborative projects.
+        </p>
+<div class="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-secondary mt-space-sm"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Left: Direct Channels Card Deck -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="p-space-xl rounded-3xl bg-surface-container/80 backdrop-blur-xl shadow-xl border border-white/5 flex flex-col gap-space-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Direct Communication</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Feel free to reach out directly through any of these communication points for immediate discussions or formal correspondence.
+            </p>
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<!-- Email -->
+<a class="p-space-md rounded-2xl bg-surface-container-high/60 border border-white/5 hover:border-primary/40 hover:bg-surface-container-highest hover:-translate-y-0.5 flex items-center gap-space-sm transition-all duration-300 group" href="mailto:shreevindyamrai@gmail.com">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[22px]">mail</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-mono-sm text-[11px] text-outline uppercase">Primary Email</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate group-hover:text-primary transition-colors">shreevindyamrai@gmail.com</span>
+</div>
+</a>
+<!-- LinkedIn -->
+<a class="p-space-md rounded-2xl bg-surface-container-high/60 border border-white/5 hover:border-secondary/40 hover:bg-surface-container-highest hover:-translate-y-0.5 flex items-center gap-space-sm transition-all duration-300 group" href="https://linkedin.com/in/shree-vindya-18372736b" rel="noopener noreferrer" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-mono-sm text-[11px] text-outline uppercase">LinkedIn Profile</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate group-hover:text-secondary transition-colors">in/shree-vindya-18372736b</span>
+</div>
+</a>
+<!-- GitHub -->
+<a class="p-space-md rounded-2xl bg-surface-container-high/60 border border-white/5 hover:border-tertiary/40 hover:bg-surface-container-highest hover:-translate-y-0.5 flex items-center gap-space-sm transition-all duration-300 group" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[22px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-mono-sm text-[11px] text-outline uppercase">GitHub Workspace</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate group-hover:text-tertiary transition-colors">shreevindyamrai-hash</span>
+</div>
+</a>
+<!-- Phone -->
+<div class="p-space-md rounded-2xl bg-surface-container-high/60 border border-white/5 flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">phone</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-[11px] text-outline uppercase">Phone &amp; WhatsApp</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">+91 6238100146</span>
+</div>
+</div>
+<!-- Location -->
+<div class="p-space-md rounded-2xl bg-surface-container-high/60 border border-white/5 flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">location_on</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono-sm text-[11px] text-outline uppercase">Current Base</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Mangaluru, Karnataka, India</span>
+<span class="font-label-mono-sm text-[11px] text-secondary">Open to relocation &amp; remote work</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Glassmorphic Inquiry Form -->
+<div class="lg:col-span-7">
+<div class="p-space-xl rounded-3xl bg-surface-container/90 backdrop-blur-xl shadow-2xl border border-white/5 hover:border-primary/20 flex flex-col gap-space-lg transition-all duration-300">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Send a Direct Message</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Direct messaging ready. Connect via email or LinkedIn for instant response.
+              </p>
+</div>
+<form class="flex flex-col gap-space-md" id="contact-form" onsubmit="event.preventDefault(); const btn = document.getElementById('submit-btn'); btn.innerText = 'Transmission Sent!'; btn.classList.add('opacity-90', 'scale-95'); setTimeout(() =&gt; { btn.innerText = 'Send Message'; btn.classList.remove('opacity-90', 'scale-95'); }, 3000);">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-sm text-label-mono-sm uppercase text-outline" for="name">Your Full Name</label>
+<input class="w-full px-space-md py-3 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline-variant border border-white/5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-inner font-body-md text-body-md" id="name" placeholder="Jane Doe" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-sm text-label-mono-sm uppercase text-outline" for="email">Email Address</label>
+<input class="w-full px-space-md py-3 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline-variant border border-white/5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-inner font-body-md text-body-md" id="email" placeholder="jane@company.com" required="" type="email">
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-sm text-label-mono-sm uppercase text-outline" for="subject">Subject / Role Opportunity</label>
+<input class="w-full px-space-md py-3 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline-variant border border-white/5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-inner font-body-md text-body-md" id="subject" placeholder="Data Analyst Role or Project Consultation" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono-sm text-label-mono-sm uppercase text-outline" for="message">Message Details</label>
+<textarea class="w-full px-space-md py-3 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline-variant border border-white/5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-inner font-body-md text-body-md resize-none" id="message" placeholder="Hello Shree Vindya, we reviewed your Crop Production Analysis project and would like to discuss..." required="" rows="5"></textarea>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs">
+<button class="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 px-space-xl py-space-sm rounded-xl bg-gradient-to-r from-primary-container via-primary to-secondary text-on-primary font-headline-sm text-[16px] leading-6 font-bold shadow-xl hover:shadow-[0_10px_35px_rgba(160,120,255,0.4)] hover:opacity-95 active:scale-95 transition-all cursor-pointer" id="submit-btn" type="submit">
+<span class="">Send Message</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<span class="font-label-mono-sm text-[11px] text-outline text-center sm:text-right">
+                  Responses typically sent within 24 hours.
+                </span>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="relative z-10 w-full bg-surface-container-lowest mt-space-3xl">
+<div class="h-[1px] w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent shadow-[0_0_15px_rgba(208,188,255,0.5)]"></div>
+<div class="max-w-7xl mx-auto px-gutter pt-space-2xl pb-space-xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<div class="md:col-span-5 flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary-container via-primary to-secondary text-surface-container-lowest font-headline-sm text-headline-sm font-bold shadow-md">
+<span class="tracking-tighter">SV</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface tracking-tight">Shree Vindya</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Data Analyst &amp; Frontend Developer crafting predictive intelligence pipelines and optical cyber-minimalist interfaces.</p>
+<div class="inline-flex items-center gap-2 mt-space-xs font-label-mono-sm text-label-mono-sm text-secondary bg-surface-container-low border border-white/5 px-space-sm py-1 rounded-full w-fit"><span class="material-symbols-outlined text-[14px]">school</span>MCA • Canara College, Mangaluru</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-space-sm">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-outline tracking-wider">Direct Navigation</span>
+<div class="grid grid-cols-2 gap-y-2 gap-x-4 font-body-sm text-body-sm">
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" data-path="portfolio-overview" href="#home">Overview</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" data-path="analytics-projects" href="#projects">Data Projects</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" data-path="about-profile" href="#about">About Profile</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" data-path="web-showcase" href="#webdev">Web Showcase</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" data-path="technical-skills" href="#skills">Core Skills</a>
+<a class="text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all inline-block" data-path="resume-credentials" href="#resume">Credentials</a>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col gap-space-sm md:items-end">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-outline tracking-wider">Transmission Channels</span>
+<a class="inline-flex items-center gap-2 font-label-mono-lg text-label-mono-lg text-primary hover:text-secondary hover:underline transition-colors" href="mailto:shreevindyamrai@gmail.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>shreevindyamrai@gmail.com
+</a>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<a class="p-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-secondary hover:scale-110 active:scale-95 transition-all" href="https://linkedin.com/in/shree-vindya-18372736b" rel="noopener noreferrer" target="_blank" title="Verified LinkedIn Profile">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</a>
+<a class="p-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-secondary hover:scale-110 active:scale-95 transition-all" href="https://github.com/shreevindyamrai-hash" rel="noopener noreferrer" target="_blank" title="Verified GitHub Workspace">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</a>
+<a class="p-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-primary hover:scale-110 active:scale-95 transition-all" href="#home" title="Back to top">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-space-2xl pt-space-md border-t border-surface-container-high/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-mono-sm text-label-mono-sm text-outline">
+<p class="">© 2026 Shree Vindya. Crafted with passion &amp; code.</p>
+<p class="text-secondary/80">Cosmic Optics &amp; Precision Telemetry Shell</p>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Intersection Observer for Smooth Section Reveals
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  const observerOptions = {
+    root: null,
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach(el => observer.observe(el));
+
+  // 2. Interactive 3D Mouse Tilt for Cards
+  const tiltCards = document.querySelectorAll('.tilt-card');
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!isTouchDevice && !prefersReducedMotion) {
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -5.5;
+        const rotateY = ((x - centerX) / centerX) * 5.5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-5px) scale(1.01)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // 3. Smooth Nav Link Highlighting on Scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 120;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('bg-surface-container-high', 'text-primary');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('bg-surface-container-high', 'text-primary');
+      }
+    });
+  }, { passive: true });
+});
+</script>
+
+
+</body></html>
